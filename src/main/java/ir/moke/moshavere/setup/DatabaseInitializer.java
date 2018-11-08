@@ -1,9 +1,11 @@
 package ir.moke.moshavere.setup;
 
 import ir.moke.moshavere.model.entity.Role;
+import ir.moke.moshavere.model.entity.Subject;
 import ir.moke.moshavere.model.entity.User;
 import ir.moke.moshavere.model.repository.RoleRepository;
 import ir.moke.moshavere.model.repository.UserRepository;
+import ir.moke.moshavere.model.service.SubjectService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,22 +17,16 @@ import javax.ejb.Startup;
 public class DatabaseInitializer {
 
     @EJB
-    private UserRepository userRepository;
+    private SubjectService service;
 
-    @EJB
-    private RoleRepository roleRepository ;
 
     @PostConstruct
     public void setup() {
-        User u = new User();
-        u.setUsername("admin");
-        u.setPassword("adminpass");
 
-        Role role = new Role() ;
-        role.setName("admin");
-        role.setUsername("admin");
+        Subject s = new Subject();
+        s.setName("AAAAAA");
+        s.setPrice(123455);
 
-        userRepository.insert(u);
-        roleRepository.insert(role);
+        service.save(s);
     }
 }
