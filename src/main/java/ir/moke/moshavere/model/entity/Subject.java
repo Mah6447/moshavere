@@ -1,5 +1,6 @@
 package ir.moke.moshavere.model.entity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonbTransient
     private long id;
 
     @Basic
