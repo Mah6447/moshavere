@@ -1,6 +1,7 @@
 package ir.moke.moshavere.model.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -46,6 +47,10 @@ public class User {
     @Basic
     @Column(name = "shaba",columnDefinition = "VARCHAR(50)")
     private String shaba ;
+
+
+    @OneToMany(orphanRemoval = true,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<UserSubject> userSubject ;
 
     public User(String username, String password, String firstName, String lastName, String mobile, String email, String grad, String nationalCode, String shaba) {
         this.username = username;

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "subjects")
-public class Subjects {
+public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,13 @@ public class Subjects {
     @Column(name = "isActive", nullable = false)
     private boolean isActive = true;
 
-    public Subjects(String subject, String price, boolean isActive) {
+    public Subject(String subject, String price, boolean isActive) {
         this.subject = subject;
         this.price = price;
         this.isActive = isActive;
     }
 
-    public Subjects() {
+    public Subject() {
     }
 
     public long getId() {
@@ -68,11 +68,11 @@ public class Subjects {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subjects subjects = (Subjects) o;
-        return id == subjects.id &&
-                Objects.equals(subject, subjects.subject) &&
-                Objects.equals(isActive, subjects.isActive) &&
-                Objects.equals(price, subjects.price);
+        Subject subject = (Subject) o;
+        return id == subject.id &&
+                Objects.equals(this.subject, subject.subject) &&
+                Objects.equals(isActive, subject.isActive) &&
+                Objects.equals(price, subject.price);
     }
 
     @Override
