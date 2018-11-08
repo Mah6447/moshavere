@@ -17,13 +17,13 @@ public class Subject {
 
     @Basic
     @Column(name = "price", columnDefinition = "INT")
-    private String price;
+    private int price;
 
     @Basic
     @Column(name = "isActive", nullable = false)
     private boolean isActive = true;
 
-    public Subject(String name, String price, boolean isActive) {
+    public Subject(String name, int price, boolean isActive) {
         this.name = name;
         this.price = price;
         this.isActive = isActive;
@@ -40,19 +40,19 @@ public class Subject {
         this.id = id;
     }
 
-    public String getSubject() {
+    public String getName() {
         return name;
     }
 
-    public void setSubject(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
