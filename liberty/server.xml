@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+  <featureManager>
+    <feature>webProfile-8.0</feature>
+    <feature>localConnector-1.0</feature>
+  </featureManager>
+  <basicRegistry id="basic" realm="BasicRealm" />
+  <httpSession securityIntegrationEnabled="false" />
+  <httpEndpoint id="defaultHttpEndpoint" httpPort="8080" httpsPort="9443" protocolVersion="http/2">
+    <httpOptions http2="enabled" />
+  </httpEndpoint>
+  <applicationManager autoExpand="true" />
+  <applicationMonitor updateTrigger="mbean" />
+  <library id="global">
+    <fileset dir="/opt/wlp/usr/servers/javaee8/lib" includes="*.jar" />
+  </library>
+  <dataSource id="MoshavereDataSource" jndiName="jdbc/moshavereDs">
+    <jdbcDriver libraryRef="global" />
+    <properties databaseName="moshavere" serverName="localhost" portNumber="3306" user="root" password="rootpass" />
+  </dataSource>
+</server>
+
