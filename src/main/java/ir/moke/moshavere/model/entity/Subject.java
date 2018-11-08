@@ -12,8 +12,8 @@ public class Subject {
     private long id;
 
     @Basic
-    @Column(name = "subject", columnDefinition = "VARCHAR(150)")
-    private String subject;
+    @Column(name = "name", columnDefinition = "VARCHAR(150)")
+    private String name;
 
     @Basic
     @Column(name = "price", columnDefinition = "INT")
@@ -23,8 +23,8 @@ public class Subject {
     @Column(name = "isActive", nullable = false)
     private boolean isActive = true;
 
-    public Subject(String subject, String price, boolean isActive) {
-        this.subject = subject;
+    public Subject(String name, String price, boolean isActive) {
+        this.name = name;
         this.price = price;
         this.isActive = isActive;
     }
@@ -41,11 +41,11 @@ public class Subject {
     }
 
     public String getSubject() {
-        return subject;
+        return name;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubject(String name) {
+        this.name = name;
     }
 
     public String getPrice() {
@@ -68,15 +68,15 @@ public class Subject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subject subject = (Subject) o;
-        return id == subject.id &&
-                Objects.equals(this.subject, subject.subject) &&
-                Objects.equals(isActive, subject.isActive) &&
-                Objects.equals(price, subject.price);
+        Subject name = (Subject) o;
+        return id == name.id &&
+                Objects.equals(this.name, name.name) &&
+                Objects.equals(isActive, name.isActive) &&
+                Objects.equals(price, name.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, subject, isActive, price);
+        return Objects.hash(id, name, isActive, price);
     }
 }

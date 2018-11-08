@@ -10,47 +10,50 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id ;
+    private long id;
 
     @Basic
-    @Column(name = "username",columnDefinition = "VARCHAR(32)")
-    private String username ;
+    @Column(name = "username", columnDefinition = "VARCHAR(32)")
+    private String username;
 
     @Basic
-    @Column(name = "password",columnDefinition = "VARCHAR(32)")
-    private String password ;
+    @Column(name = "password", columnDefinition = "VARCHAR(32)")
+    private String password;
 
     @Basic
-    @Column(name = "firstName",columnDefinition = "VARCHAR(20)")
-    private String firstName ;
+    @Column(name = "firstName", columnDefinition = "VARCHAR(20)")
+    private String firstName;
 
     @Basic
-    @Column(name = "lastName",columnDefinition = "VARCHAR(30)")
-    private String lastName ;
+    @Column(name = "lastName", columnDefinition = "VARCHAR(30)")
+    private String lastName;
 
     @Basic
-    @Column(name = "mobile",columnDefinition = "VARCHAR(20)")
-    private String mobile ;
+    @Column(name = "mobile", columnDefinition = "VARCHAR(20)")
+    private String mobile;
 
     @Basic
-    @Column(name = "email",columnDefinition = "VARCHAR(100)")
-    private String email ;
+    @Column(name = "email", columnDefinition = "VARCHAR(100)")
+    private String email;
 
     @Basic
-    @Column(name = "grad",columnDefinition = "VARCHAR(80)")
-    private String grad ;
+    @Column(name = "grad", columnDefinition = "VARCHAR(80)")
+    private String grad;
 
     @Basic
-    @Column(name = "nationalCode",columnDefinition = "VARCHAR(12)")
-    private String nationalCode ;
+    @Column(name = "nationalCode", columnDefinition = "VARCHAR(12)")
+    private String nationalCode;
 
     @Basic
-    @Column(name = "shaba",columnDefinition = "VARCHAR(50)")
-    private String shaba ;
+    @Column(name = "shaba", columnDefinition = "VARCHAR(50)")
+    private String shaba;
 
 
-    @OneToMany(orphanRemoval = true,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<UserSubject> userSubject ;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "users_subjects",
+            joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "subjectId")
+    )
+    private List<Subject> subjectList;
 
     public User(String username, String password, String firstName, String lastName, String mobile, String email, String grad, String nationalCode, String shaba) {
         this.username = username;
